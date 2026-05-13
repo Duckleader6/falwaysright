@@ -1,4 +1,9 @@
 import random
+
 run = True
-percent = ["10%","25%","50%","100%"]
-print(random.choice(percent))
+
+a = random.randint(1, 100)
+b = random.randint(1, 100)
+c = random.randint(1, 100)
+
+print("That is:", max(a, b, c),"% right.")
