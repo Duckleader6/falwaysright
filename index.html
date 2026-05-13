@@ -106,8 +106,8 @@ builtins.input = async_input
                 const code = await resp.text();
                 await py.runPythonAsync(code);
 
-                const mainExists = py.runPython('"main" in globals()');
-                if (!mainExists) throw new Error('main() is not defined in alwaysright.py');
+                const mainFn = py.globals.get('main');
+                if (!mainFn) throw new Error('main() is not defined in alwaysright.py');
 
                 // Step 2: call main() from JS so there's no top-level await problem in .py
                 await py.runPythonAsync('await globals()["main"]()');
